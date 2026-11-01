@@ -1,0 +1,308 @@
+digraph ""
+
+   {
+
+node [fontsize=9,width=".4", height=".4", margin=0];
+
+graph[fontsize=2];
+
+   // Plantilla base de java
+   programa;
+   programa [label="programa"];
+   programa -> bloque;
+   bloque [label="bloque"] ;
+   bloque -> llaveInicio;
+   llaveInicio [label="{"];
+   bloque -> decls ;
+   decls [label="decls"];
+   bloque -> instrs ;
+   instrs [label="instrs"];
+   bloque -> llavesCierre ;
+   llavesCierre [label="}"];
+
+   //Declaración de n
+   decls1 -> decls2;
+   decls2 [label = "decls"];
+   decls2 -> e;
+   e [label = "epsilon"];
+   decls1 -> decl1;
+   decl1 [label = "decl"];
+   decl1 -> tipo1;
+   tipo1 [label = "tipo"];
+   decl1 -> lD1;
+   lD1 [label = "id"];
+   decl1 -> puntoComa1;
+   puntoComa1 [label = ";"]
+   tipo1 -> basico1;
+   basico1 [label = "basico"];
+   lD1 -> n;
+   n [label = "n"];
+
+
+   //Declaración de res
+   decls -> decls1;
+   decls1 [label = "decls"];
+   decls -> decl;
+   decl [label = "decl"];
+   decl -> tipo;
+   tipo [label = "tipo"];
+   decl -> lD;
+   lD [label = "id"];
+   decl -> puntoComa;
+   puntoComa [label = ";"];
+   tipo -> basico;
+   basico [label = "basico"];
+   lD -> res;
+   res [label = "res"];
+   basico -> int;
+   int [label = "int"];
+
+   //Asignación n = 5;
+   instrs -> instrs1;
+   instrs1 [label = instrs];
+   instrs1 -> instrs2;
+   instrs2 [label = "instrs"];
+   instrs1 -> instr1;
+   instr1 [label = "instr"];
+   instrs2 -> instrs3;
+   instrs3 [label = "instrs"];
+   instrs2 -> instr2;
+   instr2 [label = "instr"];
+   instrs3 -> e1;
+   e1 [label = "epsilon"];
+   instr2 -> loc;
+   loc [label = "loc"];
+   instr2 -> igual;
+   igual [label = "="];
+   instr2 -> bool;
+   bool [label = "bool"];
+   loc -> lD3;
+   lD3 [label = "id"];
+   lD3 -> n1;
+   n1 [label = "n"];
+   bool -> comb;
+   comb [label = "comb"];
+   comb -> igualdad;
+   igualdad [label = "igualdad"];
+   igualdad -> rel;
+   rel [label = "rel"];
+   rel -> expr;
+   expr [label = "expr"];
+   expr -> term;
+   term [label = "term"];
+   term -> unario;
+   unario [label = "unario"];
+   unario -> factor;
+   factor [label = "factor"];
+   factor -> num;
+   num [label = "num"];
+   num -> nValue;
+   nValue [label = "5"];
+   instr2 -> puntoComa4;
+   puntoComa4 [label = ";"];
+
+   //Asignación res = 1;
+   instr1 -> loc1;
+   loc1 [label = "loc"];
+   instr1 -> igual1;
+   igual1 [label = "="];
+   instr1 -> bool1;
+   bool1 [label = "bool"];
+   instr1 -> puntoComa3;
+   puntoComa3 [label = ";"];
+   loc1 -> lD4;
+   lD4 [label = "id"];
+   lD4 -> res1;
+   res1 [label = "res"];
+   bool1 -> comb1;
+   comb1 [label = "comb"];
+   comb1 -> igualdad1;
+   igualdad1 [label = "igualdad"];
+   igualdad1 -> rel1;
+   rel1 [label = "rel"];
+   rel1 -> expr1;
+   expr1 [label = "expr"];
+   expr1 -> term1;
+   term1 [label = "term"];
+   term1 -> unario1;
+   unario1 [label = "unario"];
+   unario1 -> factor1;
+   factor1 [label = "factor"];
+   factor1 -> num2;
+   num2 [label = "num"];
+   num2 -> resValue;
+   resValue [label = "1"];
+
+
+
+   //Bloque while
+   instrs -> instr;
+   instr [label = "instr"];
+   instr -> while;
+   while [label = "while"];
+   instr -> parentInicio;
+   parentInicio [label = "("];
+   instr -> bool4;
+   bool4 [label = "bool"];
+   instr -> parentFin;
+   parentFin [label = ")"]
+   instr -> instr4;
+   instr4 [label = "instr"];
+   instr4 -> bloque1;
+   bloque1 [label = "bloque"];
+   bloque1 -> llaveInicio1;
+   llaveInicio1 [label = "{"];
+   bloque1 -> decls4
+   decls4 [label = "decls"];
+   bloque1 -> instrs4;
+   instrs4 [label = "instrs"];
+   bloque1 -> llaveFin;
+   llaveFin [label = "}"];
+
+   //Condición del While
+   bool4 -> comb2;
+   comb2 [label = "comb"];
+   comb2 -> igualdad2;
+   igualdad2 [label = "igualdad"];
+   igualdad2 -> rel2;
+   rel2 [label = "rel"];
+   rel2 -> expr2;
+   expr2 [label = "expr"];
+   rel2 -> expresion;
+   expresion [label = ">"];
+   rel2 -> expr3;
+   expr3 [label = "expr"];
+   expr2 -> term2;
+   term2 [label = "term"];
+   term2 -> unario2;
+   unario2 [label = "unario"];
+   unario2 -> factor2;
+   factor2 [label = "factor"];
+   factor2 -> loc2;
+   loc2 [label = "loc"]
+   loc2 -> lD5;
+   lD5 [label = "id"];
+   lD5 -> n2;
+   n2 [label = "n"];
+   expr3 -> term3;
+   term3 [label = "term"];
+   term3 -> unario3;
+   unario3 [label = "unario"];
+   unario3 -> factor3;
+   factor3 [label = "factor"];
+   factor3 -> num1;
+   num1 [label = "num"];
+   num1 -> conditionValue;
+   conditionValue [label = "1"];
+
+   //Comportamiento del While
+   decls4 -> e2;
+   e2 [label = "epsilon"];
+   instrs4 -> instrs5;
+   instrs5 [label = "instrs"];
+   instrs4 -> instr3;
+   instr3 [label = "instr"];
+
+   //res = res*n;
+   instrs5 -> instrs6;
+   instrs6 [label = "instrs"];
+   instrs5 -> instr5
+   instr5 [label = "instr"]
+   instrs6 -> e3;
+   e3 [label = "epsilon"];
+   instr5 -> loc3;
+   loc3 [label = "loc"];
+   instr5 -> igual2;
+   igual2 [label = "="];
+   instr5 -> bool3;
+   bool3 [label = "bool"];
+   instr5 -> puntoComa5;
+   puntoComa5 [label = ";"];
+   loc3 -> lD6;
+   lD6 [label = "id"];
+   lD6 -> res2;
+   res2 [label = "res"];
+   bool3 -> comb4;
+   comb4 [label = "comb"];
+   comb4 -> igualdad3;
+   igualdad3 [label = "igualdad"];
+   igualdad3 -> rel3;
+   rel3 [label = "rel"];
+   rel3 -> expr4;
+   expr4 [label = "expr"];
+   expr4 -> term4;
+   term4 [label = "term"];
+   term4 -> term5;
+   term5 [label = "term"];
+   term4 -> asterisco;
+   asterisco [label = "*"];
+   term4 -> unario4;
+   unario4 [label = "unario"];
+   term5 -> unario5;
+   unario5 [label = "unario"];
+   unario5 -> factor4;
+   factor4 [label = "factor"];
+   factor4 -> loc4;
+   loc4 [label = "loc"]
+   loc4 -> lD7;
+   lD7 [label = "id"];
+   lD7 -> resAgain;
+   resAgain [label = "res"];
+   unario4 -> factor5;
+   factor5 [label = "factor"];
+   factor5 -> loc5;
+   loc5 [label = "loc"];
+   loc5 -> lD8;
+   lD8 [label = "id"];
+   lD8 -> nAgain;
+   nAgain [label = "n"];
+
+   //n = n-1;
+   instr3 -> loc6;
+   loc6 [label = "loc"];
+   instr3 -> igual3;
+   igual3 [label = "="];
+   instr3 -> bool5
+   bool5 [label = "bool"];
+   instr3 -> puntoComa7;
+   puntoComa7 [label = ";"];
+   loc6 -> lD9;
+   lD9 [label = "id"];
+   lD9 -> n3;
+   n3 [label = "n"];
+   bool5 -> comb5;
+   comb5 [label = "comb"];
+   comb5 -> igualdad5;
+   igualdad5 [label = "igualdad"];
+   igualdad5 -> rel4;
+   rel4 [label = "rel"];
+   rel4 -> expr5;
+   expr5 [label = "expr"];
+   expr5 -> expr6;
+   expr6 [label = "expr"];
+   expr5 -> minus;
+   minus [label = "-"];
+   expr5 -> term6;
+   term6 [label = "term"];
+   expr6 -> term7;
+   term7 [label = "term"];
+   term7 -> unario6;
+   unario6 [label = "unario"];
+   unario6 -> factor6;
+   factor6 [label = "factor"];
+   factor6 -> loc7;
+   loc7 [label = "loc"];
+   loc7 -> lD10;
+   lD10 [label = "id"];
+   lD10 -> n6;
+   n6 [label = "n"];
+   term6 -> unario7;
+   unario7 [label = "unario"];
+   unario7 -> factor7;
+   factor7 [label = "factor"];
+   factor7 -> num3;
+   num3 [label = "num"];
+   num3 -> newValue;
+   newValue [label = "1"];
+
+   }
